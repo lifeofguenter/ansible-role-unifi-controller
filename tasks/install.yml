@@ -1,0 +1,27 @@
+---
+
+- name: add apt-key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 06E85760C0A52C50
+
+- name: add apt-repo
+  apt_repository:
+    repo: deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti
+    state: present
+  become: yes
+
+- name: install unifi-controller
+  apt:
+    name: unifi
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+
+- name: add default-conf
+  template:
+    src: default.conf
+    dest: /etc/default/unifi
+    mode: 0644
+  become: yes
