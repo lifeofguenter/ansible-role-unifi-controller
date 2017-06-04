@@ -4,6 +4,7 @@
   apt_key:
     keyserver: keyserver.ubuntu.com
     id: 06E85760C0A52C50
+  become: yes
 
 - name: add apt-repo
   apt_repository:
