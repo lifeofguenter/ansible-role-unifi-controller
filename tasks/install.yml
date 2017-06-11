@@ -26,3 +26,4 @@
     dest: /etc/default/unifi
     mode: 0644
   become: yes
+  notify: restart_unifi
