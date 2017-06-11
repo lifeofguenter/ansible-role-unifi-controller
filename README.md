@@ -10,7 +10,7 @@ none
 
 ## Role Variables
 
-none
+- `unifi_controller_jvm_xmx: 1024M`
 
 ## Dependencies
 
@@ -18,7 +18,7 @@ none
 
 ## Example Playbook
 
-    - hosts: nvr
+    - hosts: gw
       roles:
         - { role: lifeofguenter.unifi-controller }
 
