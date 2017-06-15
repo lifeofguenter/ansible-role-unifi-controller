@@ -11,6 +11,7 @@ none
 ## Role Variables
 
 - `unifi_controller_jvm_xmx: 1024M`
+- `unifi_user: unifi`
 
 ## Dependencies
 

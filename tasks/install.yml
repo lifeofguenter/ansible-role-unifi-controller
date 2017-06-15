@@ -20,6 +20,29 @@
     cache_valid_time: 3600
   become: yes
 
+- name: create unifi user
+  user:
+    name: "{{ unifi_user }}"
+    shell: /usr/sbin/nologin
+    home: /var/lib/unifi
+    system: yes
+  become: yes
+  when: unifi_user != 'root'
+
+- name: fix perms
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    owner: unifi
+    group: unifi
+  with_items:
+    - /var/log/unifi
+    - /var/lib/unifi
+    - /var/run/unifi
+  become: yes
+  notify: restart_unifi
+
 - name: add default-conf
   template:
     src: default.conf
