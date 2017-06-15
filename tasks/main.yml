@@ -6,7 +6,7 @@
   when: unifi_java_home not defined
 
 - name: set java-home
-  set_facts:
+  set_fact:
     unifi_java_home: "{{ unifi_java_home.stdout }}"
   when: unifi_java_home not defined
 
