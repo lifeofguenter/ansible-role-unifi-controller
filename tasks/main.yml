@@ -7,7 +7,7 @@
 
 - name: set java-home
   set_fact:
-    unifi_java_home: "{{ unifi_java_home.stdout }}"
+    unifi_java_home: "{{ unifi_raw_java_home.stdout }}"
   when: unifi_java_home is not defined
 
 - include: install.yml
