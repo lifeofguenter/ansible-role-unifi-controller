@@ -3,11 +3,11 @@
 - name: get java-home
   shell: echo "$(dirname "$(dirname "$(dpkg -L oracle-java8-jdk | grep -e 'bin/java$' | head -n1)")")"
   register: unifi_raw_java_home
-  when: unifi_java_home not defined
+  when: unifi_java_home is not defined
 
 - name: set java-home
   set_fact:
     unifi_java_home: "{{ unifi_java_home.stdout }}"
-  when: unifi_java_home not defined
+  when: unifi_java_home is not defined
 
 - include: install.yml
