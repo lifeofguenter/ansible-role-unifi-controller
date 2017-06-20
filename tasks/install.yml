@@ -34,14 +34,20 @@
     path: "{{ item }}"
     state: directory
     recurse: yes
-    owner: unifi
-    group: unifi
+    owner: "{{ unifi_user }}"
   with_items:
     - /var/log/unifi
     - /var/lib/unifi
     - /var/run/unifi
   become: yes
   notify: restart_unifi
+
+- name: perma run folder
+  template:
+    src: tmpfiles.conf
+    dest: /etc/tmpfiles.d/unifi.conf
+    mode: 0644
+  become: yes
 
 - name: add default-conf
   template:
