@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/lifeofguenter/ansible-role-unifi-controller.svg?branch=master)](https://travis-ci.org/lifeofguenter/ansible-role-unifi-controller)
 
-# Ansible Role: UniFi Video
+# Ansible Role: UniFi controller
 
 An Ansible role that installs UniFi Controller (Ubiquiti Networks) on Debian like systems.
 
