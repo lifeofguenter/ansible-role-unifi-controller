@@ -12,8 +12,15 @@ addons:
     - python-pip
 
 install:
+  - sudo -H easy_install pip
+  # http://urllib3.readthedocs.io/en/latest/user-guide.html#ssl-py2
+  - sudo -H pip install -U pyOpenSSL cryptography idna certifi
+  - sudo -H pip install -U urllib3
+  # https://github.com/ansible/ansible/issues/23642#issuecomment-297469043
+  - sudo -H pip install -U ndg-httpsclient
+
   # Install ansible
-  - pip install ansible
+  - sudo -H pip install -U ansible
 
   # Check ansible version
   - ansible --version
