@@ -3,12 +3,13 @@
 galaxy_info:
   author: Gunter Grodotzki
   description: Installs UniFi Controller
-  company: weheartwebsites UG
+  company: 9JKH (Ptd) Ltd.
   license: MIT
-  min_ansible_version: 2.3
+  min_ansible_version: 2.5
   platforms:
     - name: Ubuntu
       versions:
+        - bionic
         - xenial
         - trusty
     - name: Debian
@@ -26,4 +27,4 @@ galaxy_info:
     - unifi
 dependencies:
   - src: lifeofguenter.oracle-java
-    version: 0.1.21
+    version: 1.0.0

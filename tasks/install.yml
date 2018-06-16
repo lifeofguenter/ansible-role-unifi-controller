@@ -1,5 +1,10 @@
 ---
 
+- name: check for systemd
+  command: systemctl --version
+  register: unifi_controller_systemctl_version
+  ignore_errors: yes
+
 - name: add apt-key
   apt_key:
     keyserver: keyserver.ubuntu.com
@@ -48,6 +53,7 @@
     dest: /etc/tmpfiles.d/unifi.conf
     mode: 0644
   become: yes
+  when: unifi_controller_systemctl_version is success
 
 - name: add default-conf
   template:
