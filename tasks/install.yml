@@ -13,7 +13,7 @@
 
 - name: add apt-repo
   apt_repository:
-    repo: deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti
+    repo: deb http://www.ubnt.com/downloads/unifi/debian {{ unifi_release }} ubiquiti
     state: present
   become: yes
 
