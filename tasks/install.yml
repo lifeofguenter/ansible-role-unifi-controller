@@ -11,9 +11,19 @@
     id: 06E85760C0A52C50
   become: yes
 
+- name: install prerequisites
+  apt:
+    name:
+      - ca-certificates
+      - apt-transport-https
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: yes
+
 - name: add apt-repo
   apt_repository:
-    repo: deb http://www.ubnt.com/downloads/unifi/debian {{ unifi_release }} ubiquiti
+    repo: deb https://www.ui.com/downloads/unifi/debian {{ unifi_release }} ubiquiti
     state: present
   become: yes
 
