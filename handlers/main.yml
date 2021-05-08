@@ -1,7 +1,7 @@
 ---
 
 - name: restart_unifi
-  service:
+  systemd:
     name: unifi
     state: restarted
     enabled: yes
