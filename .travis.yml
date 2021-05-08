@@ -26,6 +26,8 @@ install:
 script:
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
+  - sudo cat /etc/default/unifi
+
   - sudo journalctl -u unifi
 
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local

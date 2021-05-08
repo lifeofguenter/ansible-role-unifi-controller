@@ -1,17 +1,3 @@
 ---
 
-- name: get java-home
-  shell: set -eo pipefail; dirname $(dirname $(readlink -f $(which javac)))
-  args:
-    executable: /bin/bash
-  register: unifi_raw_java_home
-  changed_when: no
-  when: unifi_java_home is not defined
-
-- name: set java-home
-  set_fact:
-    unifi_java_home: "{{ unifi_raw_java_home.stdout }}"
-  changed_when: no
-  when: unifi_java_home is not defined
-
 - import_tasks: install.yml
