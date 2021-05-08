@@ -1,6 +1,6 @@
 ---
 
-dist: focal
+dist: bionic
 sudo: required
 language: minimal
 
