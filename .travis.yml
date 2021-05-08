@@ -26,6 +26,8 @@ install:
 script:
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
+  - sudo journalctl -u unifi-controller
+
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
 notifications:
