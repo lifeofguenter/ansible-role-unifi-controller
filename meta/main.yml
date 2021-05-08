@@ -1,22 +1,21 @@
 ---
 
 galaxy_info:
+  role_name: unifi_controller
   author: Gunter Grodotzki
   description: Installs UniFi Controller
-  company: 9JKH (Ptd) Ltd.
   license: MIT
-  min_ansible_version: 2.5
+  min_ansible_version: '2.10'
   platforms:
     - name: Ubuntu
       versions:
+        - focal
         - bionic
         - xenial
-        - trusty
     - name: Debian
       versions:
+        - buster
         - stretch
-        - jessie
-        - wheezy
   galaxy_tags:
     - system
     - networking
@@ -26,5 +25,5 @@ galaxy_info:
     - controller
     - unifi
 dependencies:
-  - src: lifeofguenter.oracle-java
-    version: 1.0.4
+  - src: lifeofguenter.java8
+    version: 2.0.1

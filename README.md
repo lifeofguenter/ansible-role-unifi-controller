@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/lifeofguenter/ansible-role-unifi-controller.svg?branch=master)](https://travis-ci.org/lifeofguenter/ansible-role-unifi-controller)
-
 # Ansible Role: UniFi controller
+
+[![Build Status](https://travis-ci.com/lifeofguenter/ansible-role-unifi-controller.svg?branch=main)](https://travis-ci.com/lifeofguenter/ansible-role-unifi-controller)
 
 An Ansible role that installs UniFi Controller (Ubiquiti Networks) on Debian like systems.
 
@@ -15,13 +15,13 @@ none
 
 ## Dependencies
 
-- lifeofguenter.oracle-java
+- [lifeofguenter.java8](https://galaxy.ansible.com/lifeofguenter/java8)
 
 ## Example Playbook
 
     - hosts: gw
       roles:
-        - { role: lifeofguenter.unifi-controller }
+        - { role: lifeofguenter.unifi_controller }
 
 ## License
 
