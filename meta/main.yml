@@ -25,5 +25,5 @@ galaxy_info:
     - controller
     - unifi
 dependencies:
-  - src: lifeofguenter.java8
-    version: 2.0.1
+  - src: lifeofguenter.java
+    version: 3.0.1
