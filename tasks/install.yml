@@ -1,7 +1,7 @@
 ---
 
 - name: get java-home
-  shell: set -eo pipefail; dirname $(dirname $(readlink -f $(which javac)))
+  shell: set -eo pipefail; dirname "$(dirname "$(dpkg -L 'java-1.8.0-amazon-corretto-jdk' | grep -e bin/java$ | grep -v jre | head -n1)")"
   args:
     executable: /bin/bash
   register: unifi_raw_java_home

@@ -15,7 +15,7 @@ none
 
 ## Dependencies
 
-- [lifeofguenter.java8](https://galaxy.ansible.com/lifeofguenter/java8)
+- [lifeofguenter.java](https://galaxy.ansible.com/lifeofguenter/java)
 
 ## Example Playbook
 
