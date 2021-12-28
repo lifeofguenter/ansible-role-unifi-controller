@@ -25,6 +25,8 @@ install:
   - ansible-galaxy install lifeofguenter.mongodb
 
 script:
+  - ls -lh
+  - ls -lh ../
   - ansible-lint ansible-role-unifi-controller
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
   - ansible-playbook tests/test.yml -i tests/inventory --connection=local
