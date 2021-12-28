@@ -15,9 +15,9 @@
   when: unifi_java_home is not defined
 
 - name: add apt-key
-  apt_key:
-    keyserver: keyserver.ubuntu.com
+  ansible.builtin.apt_key:
     id: 06E85760C0A52C50
+    url: https://d.peegeepee.com/4A228B2D358A5094178285BE06E85760C0A52C50.asc
   become: yes
 
 - name: install prerequisites
