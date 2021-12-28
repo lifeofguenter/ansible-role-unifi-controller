@@ -15,6 +15,7 @@ addons:
       - python3-wheel
 
 install:
+  # Install ansible
   - pip3 install -U pip
   - pip3 install -U ansible ansible-lint PyYAML
 
