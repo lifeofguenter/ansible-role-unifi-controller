@@ -2,6 +2,9 @@
 
 - hosts: localhost
 
+  vars:
+    mongodb_distribution_release: bionic
+
   tasks:
     - ansible.builtin.import_role:
         name: project
