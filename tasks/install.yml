@@ -16,7 +16,7 @@
 
 - name: Add apt-key
   ansible.builtin.apt_key:
-    id: 06E85760C0A52C50
+    id: 4A228B2D358A5094178285BE06E85760C0A52C50
     url: https://keys.openpgp.org/vks/v1/by-fingerprint/4A228B2D358A5094178285BE06E85760C0A52C50
   become: yes
 
