@@ -1,5 +1,7 @@
 ---
 
 - hosts: localhost
-  roles:
-    - ansible-role-unifi-controller
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: project

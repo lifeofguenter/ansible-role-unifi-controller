@@ -1,0 +1,44 @@
+---
+
+version: 2.1
+
+jobs:
+
+  build:
+    machine:
+      # https://circleci.com/developer/machine/image/ubuntu-2204
+      image: ubuntu-2204:2022.10.2
+    environment:
+      ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
+
+    steps:
+      - run: sudo rm -f /etc/apt/sources.list.d/google.list /etc/apt/sources.list.d/heroku.list
+      - run: sudo apt-get update
+      - run: sudo apt remove --assume-yes --purge apparmor
+      - run: sudo apt install --assume-yes net-tools
+      - run: pip3 install ansible ansible-lint
+
+      - run: ansible --version
+      - run: ansible-lint --version
+
+      - checkout
+
+      - run: printf '[defaults]\nroles_path=../' > ansible.cfg
+      - run: ansible-lint
+
+      # dependencies
+      - run: ansible-galaxy install lifeofguenter.java
+      - run: ansible-galaxy install lifeofguenter.mongodb
+
+      - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
+
+      - run:
+          command: sudo journalctl --no-pager --unit=unifi
+          when: on_fail
+      - run:
+          command: sudo cat /var/log/unifi/server.log
+          when: on_fail
+
+      - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
+
+      - run: mongod --version

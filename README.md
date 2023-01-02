@@ -14,9 +14,7 @@ none
 Available variables are listed below, along with default values:
 
 ```yaml
-unifi_controller_jvm_xmx: 1024M
-
-unifi_user: unifi
+unifi_controller_jvm_xmx: 1024
 ```
 
 ## Dependencies

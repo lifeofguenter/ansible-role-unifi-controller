@@ -1,7 +1,12 @@
 ---
 
-- name: restart_unifi
-  systemd:
+- name: Reload_systemd
+  ansible.builtin.systemd:
+    daemon_reload: yes
+  become: yes
+
+- name: Restart_unifi
+  ansible.builtin.systemd:
     name: unifi
     state: restarted
     enabled: yes

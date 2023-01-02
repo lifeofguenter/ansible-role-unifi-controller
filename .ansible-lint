@@ -2,3 +2,7 @@
 
 skip_list:
   - yaml
+
+warn_list:
+  - experimental
+  - name[casing]
