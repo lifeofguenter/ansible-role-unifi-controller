@@ -5,6 +5,8 @@
 An Ansible role that installs and configures a UniFi Controller on
 Debian-like systems.
 
+_**I do not recommend installing this role on systems but rather advise to use docker**_
+
 ## Requirements
 
 none
@@ -14,9 +16,9 @@ none
 Available variables are listed below, along with default values:
 
 ```yaml
-unifi_controller_jvm_xmx: 1024M
+unifi_controller_jvm_xmx: 1024
 
-unifi_user: unifi
+mongodb_distribution_release: stretch|bionic # last supported with 3.6, can be installed on systems up to bullseye/focal
 ```
 
 ## Dependencies

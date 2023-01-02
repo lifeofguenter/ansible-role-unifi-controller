@@ -1,5 +1,10 @@
 ---
 
 - hosts: localhost
-  roles:
-    - ansible-role-unifi-controller
+
+  vars:
+    mongodb_distribution_release: bionic
+
+  tasks:
+    - ansible.builtin.import_role:
+        name: project

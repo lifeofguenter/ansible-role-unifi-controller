@@ -1,0 +1,12 @@
+[Service]
+ExecStart=
+ExecStart={{ unifi_java_home }}/bin/java \
+    -Dfile.encoding=UTF-8 \
+    -Djava.awt.headless=true \
+    -Dapple.awt.UIElement=true \
+    -Dunifi.core.enabled=${UNIFI_CORE_ENABLED} \
+    $UNIFI_JVM_OPTS \
+    -XX:+ExitOnOutOfMemoryError \
+    -XX:+CrashOnOutOfMemoryError \
+    -XX:ErrorFile=/usr/lib/unifi/logs/hs_err_pid%p.log \
+    -jar /usr/lib/unifi/lib/ace.jar start

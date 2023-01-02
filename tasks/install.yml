@@ -1,27 +1,28 @@
 ---
 
-- name: get java-home
-  shell: set -eo pipefail; dirname "$(dirname "$(dpkg -L 'java-1.8.0-amazon-corretto-jdk' | grep -e bin/java$ | grep -v jre | head -n1)")"
+- name: Get java-home
+  ansible.builtin.shell: set -eo pipefail; dirname "$(dirname "$(dpkg -L 'java-11-amazon-corretto-jdk' | grep -e bin/java$ | grep -v jre | head -n1)")"
   args:
     executable: /bin/bash
   register: unifi_raw_java_home
   changed_when: no
   when: unifi_java_home is not defined
 
-- name: set java-home
-  set_fact:
+- name: Set java-home
+  ansible.builtin.set_fact:
     unifi_java_home: "{{ unifi_raw_java_home.stdout }}"
   changed_when: no
   when: unifi_java_home is not defined
 
-- name: add apt-key
-  ansible.builtin.apt_key:
-    id: 06E85760C0A52C50
-    url: https://d.peegeepee.com/4A228B2D358A5094178285BE06E85760C0A52C50.asc
+- name: Add apt-key
+  ansible.builtin.get_url:
+    url: https://dl.ui.com/unifi/unifi-repo.gpg
+    dest: /etc/apt/trusted.gpg.d/unifi-repo.gpg
+    mode: '0644'
   become: yes
 
-- name: install prerequisites
-  apt:
+- name: Install prerequisites
+  ansible.builtin.apt:
     name:
       - ca-certificates
       - apt-transport-https
@@ -30,53 +31,24 @@
     cache_valid_time: 3600
   become: yes
 
-- name: add apt-repo
-  apt_repository:
+- name: Add apt-repo
+  ansible.builtin.apt_repository:
     repo: deb https://www.ui.com/downloads/unifi/debian {{ unifi_release }} ubiquiti
     state: present
   become: yes
 
-- name: install unifi-controller
-  apt:
+- name: Install unifi-controller
+  ansible.builtin.apt:
     name: unifi
     state: present
     update_cache: yes
     cache_valid_time: 3600
   become: yes
 
-- name: create unifi user
-  user:
-    name: "{{ unifi_user }}"
-    shell: /usr/sbin/nologin
-    home: /var/lib/unifi
-    system: yes
-  become: yes
-  when: unifi_user != 'root'
-
-- name: fix perms
-  file:
-    path: "{{ item }}"
-    state: directory
-    recurse: yes
-    owner: "{{ unifi_user }}"
-  with_items:
-    - /var/log/unifi
-    - /var/lib/unifi
-    - /var/run/unifi
-  become: yes
-  notify: restart_unifi
-
-- name: perma run folder
-  template:
-    src: tmpfiles.conf
-    dest: /etc/tmpfiles.d/unifi.conf
-    mode: 0644
-  become: yes
-
-- name: add default-conf
-  template:
+- name: Add default-conf
+  ansible.builtin.template:
     src: default.conf
     dest: /etc/default/unifi
     mode: 0644
   become: yes
-  notify: restart_unifi
+  notify: Restart_unifi

@@ -1,3 +1,7 @@
 ---
 
-- import_tasks: install.yml
+- name: Import install.yml
+  ansible.builtin.import_tasks: install.yml
+
+- name: Import systemd.yml
+  ansible.builtin.import_tasks: systemd.yml
