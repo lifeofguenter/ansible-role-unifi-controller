@@ -1,5 +1,7 @@
 # lifeofguenter.unifi-controller
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lifeofguenter/ansible-role-unifi-controller/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lifeofguenter/ansible-role-unifi-controller/tree/main)
+
 An Ansible role that installs and configures a UniFi Controller on
 Debian-like systems.
 

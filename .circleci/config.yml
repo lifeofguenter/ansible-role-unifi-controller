@@ -7,7 +7,7 @@ jobs:
   build:
     machine:
       # https://circleci.com/developer/machine/image/ubuntu-2204
-      image: ubuntu-2004:2022.10.1
+      image: ubuntu-2204:2023.04.2
     environment:
       ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
 

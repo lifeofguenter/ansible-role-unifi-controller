@@ -28,6 +28,6 @@ galaxy_info:
     - unifi
 dependencies:
   - src: lifeofguenter.java
-    version: 3.2.0
+    version: 3.2.1
   - src: lifeofguenter.mongodb
     version: 0.1.0
