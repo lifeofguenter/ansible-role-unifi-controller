@@ -1,7 +1,5 @@
 # lifeofguenter.unifi-controller
 
-[![Build Status](https://travis-ci.com/lifeofguenter/ansible-role-unifi-controller.svg?branch=main)](https://travis-ci.com/lifeofguenter/ansible-role-unifi-controller)
-
 An Ansible role that installs and configures a UniFi Controller on
 Debian-like systems.
 

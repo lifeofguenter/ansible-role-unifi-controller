@@ -5,14 +5,14 @@
     state: directory
     path: /etc/systemd/system/unifi.service.d
     mode: '0755'
-  become: yes
+  become: true
 
 - name: Copy systemd override
   ansible.builtin.template:
     src: override.service
     dest: /etc/systemd/system/unifi.service.d/override.conf
     mode: '0644'
-  become: yes
+  become: true
   notify:
     - Reload_systemd
     - Restart_unifi
