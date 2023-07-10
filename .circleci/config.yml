@@ -12,10 +12,12 @@ jobs:
       ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
 
     steps:
-      - run: sudo rm -f /etc/apt/sources.list.d/google.list /etc/apt/sources.list.d/heroku.list
-      - run: sudo apt-get update
+      - run: sudo rm -f /etc/apt/sources.list.d/google* /etc/apt/sources.list.d/heroku*
+      - run: ls -lh /etc/apt/sources.list.d/
       - run: sudo apt remove --assume-yes --purge apparmor
-      - run: sudo apt install --assume-yes net-tools
+      - run: sudo apt update
+      - run: sudo apt install tree
+
       - run: pip3 install ansible ansible-lint
 
       - run: ansible --version
