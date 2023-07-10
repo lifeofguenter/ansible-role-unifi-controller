@@ -5,13 +5,13 @@
   args:
     executable: /bin/bash
   register: unifi_raw_java_home
-  changed_when: no
+  changed_when: false
   when: unifi_java_home is not defined
 
 - name: Set java-home
   ansible.builtin.set_fact:
     unifi_java_home: "{{ unifi_raw_java_home.stdout }}"
-  changed_when: no
+  changed_when: false
   when: unifi_java_home is not defined
 
 - name: Add apt-key
@@ -19,7 +19,7 @@
     url: https://dl.ui.com/unifi/unifi-repo.gpg
     dest: /etc/apt/trusted.gpg.d/unifi-repo.gpg
     mode: '0644'
-  become: yes
+  become: true
 
 - name: Install prerequisites
   ansible.builtin.apt:
@@ -27,28 +27,28 @@
       - ca-certificates
       - apt-transport-https
     state: present
-    update_cache: yes
+    update_cache: true
     cache_valid_time: 3600
-  become: yes
+  become: true
 
 - name: Add apt-repo
   ansible.builtin.apt_repository:
     repo: deb https://www.ui.com/downloads/unifi/debian {{ unifi_release }} ubiquiti
     state: present
-  become: yes
+  become: true
 
 - name: Install unifi-controller
   ansible.builtin.apt:
     name: unifi
     state: present
-    update_cache: yes
+    update_cache: true
     cache_valid_time: 3600
-  become: yes
+  become: true
 
 - name: Add default-conf
   ansible.builtin.template:
     src: default.conf
     dest: /etc/default/unifi
-    mode: 0644
-  become: yes
+    mode: '0644'
+  become: true
   notify: Restart_unifi
