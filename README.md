@@ -1,5 +1,7 @@
 # lifeofguenter.unifi-controller
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/lifeofguenter/ansible-role-unifi-controller/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/lifeofguenter/ansible-role-unifi-controller/tree/main)
+
 An Ansible role that installs and configures a UniFi Controller on
 Debian-like systems.
 
@@ -21,7 +23,6 @@ mongodb_distribution_release: stretch|bionic # last supported with 3.6, can be i
 
 ## Dependencies
 
-- [lifeofguenter.java](https://galaxy.ansible.com/lifeofguenter/java)
 - [lifeofguenter.monogdb](https://galaxy.ansible.com/lifeofguenter/mongodb)
 
 ## Example Playbook

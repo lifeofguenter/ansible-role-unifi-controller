@@ -10,13 +10,9 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - focal
-        - bionic
         - xenial
     - name: Debian
       versions:
-        - bullseye
-        - buster
         - stretch
   galaxy_tags:
     - system
@@ -27,7 +23,5 @@ galaxy_info:
     - controller
     - unifi
 dependencies:
-  - src: lifeofguenter.java
-    version: 3.2.0
   - src: lifeofguenter.mongodb
     version: 0.1.0

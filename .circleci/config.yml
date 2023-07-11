@@ -7,7 +7,7 @@ jobs:
   build:
     machine:
       # https://circleci.com/developer/machine/image/ubuntu-2204
-      image: ubuntu-2004:2022.10.1
+      image: ubuntu-2004:202010-01
     environment:
       ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
 
@@ -29,7 +29,6 @@ jobs:
       - run: ansible-lint
 
       # dependencies
-      - run: ansible-galaxy install lifeofguenter.java
       - run: ansible-galaxy install lifeofguenter.mongodb
 
       - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
@@ -43,4 +42,6 @@ jobs:
 
       - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
+      - run: sudo cat /var/log/unifi/server.log
+      - run: sudo journalctl --no-pager --unit=unifi
       - run: mongod --version
