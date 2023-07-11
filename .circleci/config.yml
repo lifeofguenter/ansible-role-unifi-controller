@@ -10,6 +10,7 @@ jobs:
       image: ubuntu-2004:202010-01
     environment:
       ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
+      PYTHONPATH: /usr/lib/python3/dist-packages
 
     steps:
       - run: sudo rm -f /etc/apt/sources.list.d/google* /etc/apt/sources.list.d/heroku*
