@@ -16,12 +16,10 @@ jobs:
       - run: ls -lh /etc/apt/sources.list.d/
       - run: sudo apt remove --assume-yes --purge apparmor
       - run: sudo apt update
-      - run: sudo apt install tree
-
-      - run: pip3 install ansible ansible-lint
+      - run: sudo apt install tree ansible ansible-lint
 
       - run: ansible --version
-      - run: ansible-lint --version
+      - run: ansible-lint
 
       - checkout
 
