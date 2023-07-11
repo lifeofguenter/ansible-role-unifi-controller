@@ -20,7 +20,7 @@ jobs:
       - run: sudo apt install tree ansible ansible-lint
 
       - run: ansible --version
-      - run: ansible-lint
+      - run: ansible-lint --version
 
       - checkout
 
