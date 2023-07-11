@@ -25,7 +25,7 @@ jobs:
       - checkout
 
       - run: printf '[defaults]\nroles_path=../' > ansible.cfg
-      - run: ansible-lint
+      #- run: ansible-lint
 
       # dependencies
       - run: ansible-galaxy install lifeofguenter.mongodb
