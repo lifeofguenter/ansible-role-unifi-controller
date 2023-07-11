@@ -1,19 +1,5 @@
 ---
 
-- name: Get java-home
-  ansible.builtin.shell: set -eo pipefail; dirname "$(dirname "$(dpkg -L 'java-11-amazon-corretto-jdk' | grep -e bin/java$ | grep -v jre | head -n1)")"
-  args:
-    executable: /bin/bash
-  register: unifi_raw_java_home
-  changed_when: false
-  when: unifi_java_home is not defined
-
-- name: Set java-home
-  ansible.builtin.set_fact:
-    unifi_java_home: "{{ unifi_raw_java_home.stdout }}"
-  changed_when: false
-  when: unifi_java_home is not defined
-
 - name: Add apt-key
   ansible.builtin.get_url:
     url: https://dl.ui.com/unifi/unifi-repo.gpg

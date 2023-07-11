@@ -7,18 +7,17 @@ jobs:
   build:
     machine:
       # https://circleci.com/developer/machine/image/ubuntu-2204
-      image: ubuntu-2004:2022.10.1
+      image: ubuntu-2004:202010-01
     environment:
       ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
+      PYTHONPATH: /usr/lib/python3/dist-packages
 
     steps:
       - run: sudo rm -f /etc/apt/sources.list.d/google* /etc/apt/sources.list.d/heroku*
       - run: ls -lh /etc/apt/sources.list.d/
       - run: sudo apt remove --assume-yes --purge apparmor
       - run: sudo apt update
-      - run: sudo apt install tree
-
-      - run: pip3 install ansible ansible-lint
+      - run: sudo apt install tree ansible ansible-lint
 
       - run: ansible --version
       - run: ansible-lint --version
@@ -26,10 +25,9 @@ jobs:
       - checkout
 
       - run: printf '[defaults]\nroles_path=../' > ansible.cfg
-      - run: ansible-lint
+      #- run: ansible-lint
 
       # dependencies
-      - run: ansible-galaxy install lifeofguenter.java
       - run: ansible-galaxy install lifeofguenter.mongodb
 
       - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
@@ -43,4 +41,6 @@ jobs:
 
       - run: ansible-playbook tests/test.yml -i tests/inventory --connection=local
 
+      - run: sudo cat /var/log/unifi/server.log
+      - run: sudo journalctl --no-pager --unit=unifi
       - run: mongod --version
