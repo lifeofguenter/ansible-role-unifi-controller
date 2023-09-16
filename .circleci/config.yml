@@ -7,7 +7,7 @@ jobs:
   build:
     machine:
       # https://circleci.com/developer/machine/image/ubuntu-2204
-      image: ubuntu-2004:202010-01
+      image: ubuntu-2004:2023.07.1
     environment:
       ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
       PYTHONPATH: /usr/lib/python3/dist-packages
@@ -15,9 +15,11 @@ jobs:
     steps:
       - run: sudo rm -f /etc/apt/sources.list.d/google* /etc/apt/sources.list.d/heroku*
       - run: ls -lh /etc/apt/sources.list.d/
-      - run: sudo apt remove --assume-yes --purge apparmor
+      - run: sudo apt remove --assume-yes --purge apparmor python3-jinja2 python3-click
       - run: sudo apt update
-      - run: sudo apt install tree ansible ansible-lint
+      - run: sudo apt install python3-pip tree
+      - run: sudo pip install --upgrade jinja2 click
+      - run: sudo pip install ansible ansible-lint==6.12.2
 
       - run: ansible --version
       - run: ansible-lint --version
@@ -25,7 +27,7 @@ jobs:
       - checkout
 
       - run: printf '[defaults]\nroles_path=../' > ansible.cfg
-      #- run: ansible-lint
+      - run: ansible-lint
 
       # dependencies
       - run: ansible-galaxy install lifeofguenter.mongodb

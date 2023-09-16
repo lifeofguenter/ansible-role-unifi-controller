@@ -10,10 +10,11 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - xenial
+        - focal
     - name: Debian
       versions:
-        - stretch
+        - bookworm
+        - bullseye
   galaxy_tags:
     - system
     - networking
