@@ -15,7 +15,7 @@ jobs:
     steps:
       - run: sudo rm -f /etc/apt/sources.list.d/google* /etc/apt/sources.list.d/heroku*
       - run: ls -lh /etc/apt/sources.list.d/
-      - run: sudo apt remove --assume-yes --purge apparmor
+      - run: sudo apt remove --assume-yes --purge apparmor python3-jinja2
       - run: sudo apt update
       - run: sudo apt install python3-pip tree
       - run: sudo pip install --upgrade jinja2
