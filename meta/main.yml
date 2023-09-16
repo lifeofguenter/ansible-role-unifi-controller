@@ -10,11 +10,11 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - jammy
         - focal
     - name: Debian
       versions:
         - bookworm
+        - bullseye
   galaxy_tags:
     - system
     - networking
