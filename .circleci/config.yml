@@ -7,7 +7,7 @@ jobs:
   build:
     machine:
       # https://circleci.com/developer/machine/image/ubuntu-2204
-      image: ubuntu-2004:202010-01
+      image: ubuntu-2204:2023.07.2
     environment:
       ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
       PYTHONPATH: /usr/lib/python3/dist-packages
@@ -24,9 +24,7 @@ jobs:
 
       - checkout
 
-      # - run: printf '[defaults]\nroles_path=../' > ansible.cfg
-      - run: pwd
-      - run: tree
+      # - run: printf '[defaults]\nroles_path=.' > ansible.cfg
       - run: ansible-lint
 
       # dependencies
