@@ -18,7 +18,7 @@ jobs:
       - run: sudo apt remove --assume-yes --purge apparmor
       - run: sudo apt update
       - run: sudo apt install python3-pip tree
-      - run: sudo pip install ansible ansible-lint
+      - run: sudo pip install Jinja2 ansible ansible-lint
 
       - run: ansible --version
       - run: ansible-lint --version
