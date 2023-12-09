@@ -5,7 +5,12 @@
 An Ansible role that installs and configures a UniFi Controller on
 Debian-like systems.
 
-_**I do not recommend installing this role on systems but rather advise to use docker**_
+## Compatability Matrix
+
+| UniFi Controller Version | OS             | Java | MongoDB |
+|--------------------------|----------------|------|---------|
+| <7.5                     | Debian Stretch | 11   | 3.6     |
+| 7.5+                     | Ubuntu 20.04   | 17   | 4.4     |
 
 ## Requirements
 
@@ -18,7 +23,7 @@ Available variables are listed below, along with default values:
 ```yaml
 unifi_controller_jvm_xmx: 1024
 
-mongodb_distribution_release: stretch|bionic # last supported with 3.6, can be installed on systems up to bullseye/focal
+unifi_release: stable # unifi-7.5
 ```
 
 ## Dependencies

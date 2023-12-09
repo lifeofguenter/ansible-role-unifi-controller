@@ -7,7 +7,7 @@ jobs:
   build:
     machine:
       # https://circleci.com/developer/machine/image/ubuntu-2204
-      image: ubuntu-2004:2023.07.1
+      image: ubuntu-2004:2023.10.1
     environment:
       ANSIBLE_PYTHON_INTERPRETER: /usr/bin/python3
       PYTHONPATH: /usr/lib/python3/dist-packages

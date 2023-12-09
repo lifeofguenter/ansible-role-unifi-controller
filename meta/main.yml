@@ -11,10 +11,6 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - focal
-    - name: Debian
-      versions:
-        - bookworm
-        - bullseye
   galaxy_tags:
     - system
     - networking
