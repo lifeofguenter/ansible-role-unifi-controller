@@ -2,4 +2,4 @@
 
 unifi_controller_jvm_xms: "{{ unifi_controller_jvm_xmx }}"
 
-mongodb_version: '4.4'
+mongodb_version: "{{ unifi_mongodb_version }}"

@@ -3,3 +3,5 @@
 unifi_controller_jvm_xmx: 1024
 
 unifi_release: stable
+
+unifi_mongodb_version: '4.4'
